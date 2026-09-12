@@ -56,11 +56,6 @@ LUFFY/
 
 ### 📝 Complete TODO List
 
-- [ ] **luffy/deepscaler/utils.py:45** - Implement OpenAI API client initialization
-- [ ] **luffy/deepscaler/utils.py:46** - Add proper authentication handling
-- [ ] **luffy/deepscaler/utils.py:47** - Implement exponential backoff retry logic for rate limits
-- [ ] **luffy/deepscaler/utils.py:48** - Add comprehensive error handling for different API errors
-- [ ] **luffy/deepscaler/utils.py:49** - Implement response parsing and validation
 - [ ] **luffy/deepscaler/utils.py:50** - Add logging for API calls and errors
 - [ ] **luffy/deepscaler/utils.py:51** - Support batch processing for multiple prompts
 - [ ] **luffy/deepscaler/utils.py:52** - Add timeout configuration for API calls
@@ -115,10 +110,7 @@ LUFFY/
 - [ ] **luffy/verl/verl/protocol.py:116** - Handle edge cases where batch_size is not divisible by new_batch_size
 - [ ] **luffy/verl/verl/protocol.py:117** - Optimize memory usage during tensor reshaping
 - [ ] **luffy/verl/verl/protocol.py:118** - Add support for different tensor types and shapes
-- [ ] **luffy/verl/verl/protocol.py:131** - Implement batch dimension unfolding functionality
-- [ ] **luffy/verl/verl/protocol.py:132** - Add support for variable batch dimensions
 - [ ] **luffy/verl/verl/protocol.py:133** - Optimize tensor view operations for performance
-- [ ] **luffy/verl/verl/protocol.py:134** - Handle non-tensor batch data reshaping properly
 - [ ] **luffy/verl/verl/protocol.py:135** - Add error handling for invalid batch dimensions
 - [ ] **luffy/verl/verl/protocol.py:156** - (zhangchi.usc1992) add consistency check
 - [ ] **luffy/verl/verl/protocol.py:252** - we can actually lift this restriction if needed
@@ -161,6 +153,8 @@ LUFFY/
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/megatron_weight_loaders.py:67** - check megatron
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/megatron_weight_loaders.py:254** - need to implement a general way to deal with prefix
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/megatron_weight_loaders.py:272** - (shengguangming): latest commit in vllm fix awq for this function and add load_weights
+- [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/megatron_weight_loaders.py:325** - (pad to be divided by 4)
+- [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/megatron_weight_loaders.py:337** - remove dependencies from megatron
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/model_loader.py:141** - (sgm): This is a hack, we need to register the load_weight() func for each model in vllm
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/model_loader.py:226** - (sgm): This is a hack, we need to register the load_weight() func for each model in vllm
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/model_runner.py:274** - (sgm): perform sampling on rank 0
@@ -188,6 +182,7 @@ LUFFY/
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_5_4/megatron_weight_loaders.py:67** - check megatron
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_5_4/megatron_weight_loaders.py:254** - need to implement a general way to deal with prefix
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_5_4/megatron_weight_loaders.py:272** - (shengguangming): latest commit in vllm fix awq for this function and add load_weights
+- [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_5_4/megatron_weight_loaders.py:273** - (shengguangming): latest commit in vllm fix awq for this function and add load_weights
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_5_4/model_loader.py:152** - (sgm): This is a hack, we need to register the load_weight() func for each model in vllm
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_5_4/model_loader.py:239** - (sgm): This is a hack, we need to register the load_weight() func for each model in vllm
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_5_4/parallel_state.py:94** - (sgm): deviate from the v0.5.4, not pp now
@@ -243,9 +238,12 @@ LUFFY/
 - [ ] **luffy/verl/verl/utils/checkpoint/fsdp_checkpoint_manager.py:135** - address optimizer is None
 - [ ] **luffy/verl/verl/utils/hdfs_io.py:67** - (haibin.lin):
 - [ ] **luffy/verl/verl/utils/hdfs_io.py:102** - (haibin.lin):
+- [ ] **luffy/verl/verl/utils/megatron/tensor_parallel.py:137** - (zhangchi.usc1992): We may change the implementation later
 - [ ] **luffy/verl/verl/utils/megatron_utils.py:202** - (sgm): check how to disable megatron timers
 - [ ] **luffy/verl/verl/utils/model.py:164** - we can make this faster
 - [ ] **luffy/verl/verl/utils/model.py:272** - to find a better way to load mistral7b-rm lm_head
+- [ ] **luffy/verl/verl/utils/torch_functional.py:162** - optimize this. Technically, we only need one broadcast
+- [ ] **luffy/verl/verl/utils/torch_functional.py:171** - optimize this.
 - [ ] **luffy/verl/verl/utils/torch_functional.py:362** - add them back
 - [ ] **luffy/verl/verl/workers/actor/megatron_actor.py:158** - (zhangchi.usc1992): actually, this function should only return log_prob and this logic should be handled by user outside
 - [ ] **luffy/verl/verl/workers/actor/megatron_actor.py:225** - actually, we just need to control the sampling order.
@@ -272,6 +270,7 @@ LUFFY/
 - [ ] **luffy/verl/verl/workers/reward_model/megatron/reward_model.py:145** - (sgm): check why is bfloat16
 - [ ] **luffy/verl/verl/workers/reward_model/megatron/reward_model.py:192** - actually, we just need to control the sampling order.
 - [ ] **luffy/verl/verl/workers/reward_model/megatron/reward_model.py:233** - we may use the new schedule instead
+- [ ] **luffy/verl/verl/workers/rollout/hf_rollout.py:16** - refactor this class. Currently, it will hang when using FSDP HybridShard. We should actually create a single GPU model.
 - [ ] **luffy/verl/verl/workers/rollout/hf_rollout.py:98** - filter out the seq with no answers like ds-chat
 - [ ] **luffy/verl/verl/workers/sharding_manager/fsdp_ulysses.py:49** - check how to set seed for each model
 - [ ] **luffy/verl/verl/workers/sharding_manager/fsdp_ulysses.py:56** - check how to set seed for each model
@@ -280,7 +279,7 @@ LUFFY/
 - [ ] **luffy/verl/verl/workers/sharding_manager/fsdp_vllm.py:122** - Current impl doesn't consider FSDP with torch micro-dp
 - [ ] **luffy/verl/verl/workers/sharding_manager/fsdp_vllm.py:130** - shall we build a micro_dp group for vllm when integrating with vLLM?
 - [ ] **luffy/verl/verl/workers/sharding_manager/megatron_vllm.py:76** - after binding to the memory buffer, we can load the checkpoint here
-- [ ] **luffy/verl/verl/workers/sharding_manager/megatron_vllm.py:253** - (sgm): this may not be true for FSDP -> vLLM
+- [ ] **luffy/verl/verl/workers/sharding_manager/megatron_vllm.py:253** - (sgm): this may not be true for FSDP -&gt; vLLM
 - [ ] **luffy/verl/verl/workers/sharding_manager/megatron_vllm.py:323** - (zhangchi.usc1992) We can consider copy non-tp weight to another infer buffer.
 
 ## 🤝 Contributing
@@ -289,4 +288,3 @@ LUFFY/
 2. Implement the functionality
 3. Test your implementation
 4. Update this README when TODOs are completed
-
